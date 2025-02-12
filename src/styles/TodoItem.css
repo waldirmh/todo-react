@@ -1,0 +1,49 @@
+.task-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: 7px;
+  background: var(--primary-bg);
+  height: 60px;
+  max-height: 80px;
+  box-shadow: 0px 2px 3px rgba(2, 54, 50, 0.623);
+  list-style: none;
+  color: var(--text-color-white);
+  font-size: 24px;
+  font-weight: 500;
+}
+.text-item {
+  display: block;
+  width: 250px;
+  max-width: 270px;
+}
+.bi-check-square-fill {
+  position: relative;
+  top: 4%;
+  left: -11%;
+  color: blue;
+}
+
+.bi-trash-fill {
+  position: relative;
+  top: 4%;
+  right: -11%;
+  color: red;
+}
+.bi-trash-fill.completed {
+  color: green;
+}
+
+.text-item.completed-text {
+  text-decoration: line-through;
+  color: green;
+}
+.bi-check-square-fill.completed {
+  color: green;
+}
+.bi:hover {
+  font-size: 30px;
+}

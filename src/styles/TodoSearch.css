@@ -1,0 +1,19 @@
+.input-search {
+  height: 44px;
+  padding-left: 17px;
+  max-height: 80px;
+  border-radius: 5px;
+  width: 90%;
+}
+.input-search::placeholder {
+  color: var(--text-color-gray);
+  padding-left: 12px;
+}
+.bi {
+  font-size: 27px;
+}
+.bi-search {
+  position: relative;
+  right: 13%;
+  top: 5px;
+}
