@@ -1,27 +1,22 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { TodoList } from "./components/TodoList";
-import { TodoItem } from "./components/TodoItem";
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoSearch } from "./components/TodoSearch";
-import { TodoCreate } from "./components/TodoCreate";
+import { TodoList } from "../components/TodoList";
+import { TodoItem } from "../components/TodoItem";
+import { TodoCounter } from "../components/TodoCounter/index";
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoCreate } from "../components/TodoCreate";
 import { ToastContainer, toast } from "react-toastify";
-import useLocalStorage from "./LocalStorage/localStorage";
+import { useLocalStorage } from "./useLocalStorage";
 // Importar Bootstrap CSS y JS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
-  const loadTodosStorage = () => {
-    const savedTodos = localStorage.getItem("TODOS");
-    return savedTodos ? JSON.parse(savedTodos) : [];
-  };
   const [searchTerm, setSearchTerm] = useState("");
   const [completedCount, setCompletedCount] = useState(0);
   const [newTask, setNewTask] = useState("");
-  // const [todos, setTodos] = useState(loadTodosStorage);
   const [todos, setTodos] = useLocalStorage("TODOS", []);
-
+  const [hasTask, setHasTask] = useState(false);
   // funtions
 
   const handleSearchChange = (e) => {
@@ -84,7 +79,7 @@ function App() {
       <div className="container-fluid d-flex justify-content-center align-items-center">
         <div className="container">
           <div className="row g-2">
-            <div className="col-6">
+            <div className="container col-sm-12  col-md-5 col-lg-5">
               <TodoCreate
                 newTask={newTask}
                 handleInputChange={handleInputChange}
@@ -93,11 +88,11 @@ function App() {
                 handleCancelAddTask={handleCancelAddTask}
               />
             </div>
-            <div className="col-6">
+            <div className="container col-sm-12 col-md-7 col-lg-7">
               <div className="content-tasks">
                 <TodoCounter completed={completedCount} total={todos.length} />
                 <TodoSearch handleSearchChange={handleSearchChange} />
-                <TodoList>
+                <TodoList todos={todos}>
                   {filteredTodos.map((todo, index) => (
                     <TodoItem
                       key={index}

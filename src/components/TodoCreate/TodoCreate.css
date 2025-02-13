@@ -1,25 +1,5 @@
-:root {
-  --bg-app: url("/src/image/fondo.jpg");
-  --primary-bg: #0dd8df;
-  --secondary-bg: #057b9d;
-  --text-color-white: white;
-  --text-color-black: rgb(78, 76, 76);
-  --text-color-gray: gray;
-}
-
-.container-fluid {
-  background-image: var(--bg-app);
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  height: 100vh;
-  position: fixed;
-  margin: 0px;
-  padding: 0px;
-}
-/* FIRST CARD  */
 .content-create-task {
-  background: #b2b7b7;
+  background: RGB(175,233,244);
   padding: 35px;
   border-radius: 10px;
   height: 600px;
@@ -91,13 +71,3 @@
     transform: rotateY(360deg);
   }
 }
-
-/* SECOND CARD  */
-.content-tasks {
-  /* background: rgb(8, 231, 64); */
-  border-radius: 10px;
-  padding: 35px;
-  height: 600px;
-  max-height: 650px;
-}
-

@@ -1,5 +1,4 @@
-import "../styles/TodoCounter.css";
-
+import "./TodoCreate.css";
 function TodoCreate({
   newTask,
   handleInputChange,
