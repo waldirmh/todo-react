@@ -7,7 +7,7 @@
 
 ## Aplicación Web
 
-Aplicación web para gestion de tareas: crear , eliminar ,marcar como terminado
+Aplicación web para gestionar tareas: crear , eliminar ,marcar como terminado
 
 ## Available Scripts
 
@@ -31,3 +31,5 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `Support`
+Correo [waldirmendozahuaman887@gmail.com].
