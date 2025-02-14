@@ -77,9 +77,9 @@ function App() {
     <>
       <ToastContainer />
       <div className="container-fluid d-flex justify-content-center align-items-center">
-        <div className="container">
+        <div className="container m-md-0 p-md-1">
           <div className="row g-2">
-            <div className="container col-sm-12  col-md-5 col-lg-5">
+            <div className="container col-sm-12  col-md-6 col-lg-5 p-md-1">
               <TodoCreate
                 newTask={newTask}
                 handleInputChange={handleInputChange}
@@ -88,8 +88,8 @@ function App() {
                 handleCancelAddTask={handleCancelAddTask}
               />
             </div>
-            <div className="container col-sm-12 col-md-7 col-lg-7">
-              <div className="content-tasks">
+            <div className="container col-sm-12 col-md-6 col-lg-7  p-md-1">
+              <div className="content-tasks p-md-2">
                 <TodoCounter completed={completedCount} total={todos.length} />
                 <TodoSearch handleSearchChange={handleSearchChange} />
                 <TodoList todos={todos}>

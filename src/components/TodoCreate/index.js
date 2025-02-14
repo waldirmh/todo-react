@@ -8,8 +8,8 @@ function TodoCreate({
 }) {
   return (
     <>
-      <div className="content-create-task">
-        <h5 className="t1"> Create New Task</h5>
+      <div className="content-create-task p-md-3">
+        <h5 className="t1 mt-md-3"> Create New Task</h5>
         <div className="mb-1">
           <label className="form-label fw-semibold t2">My Task</label>
           <input

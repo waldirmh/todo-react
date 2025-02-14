@@ -73,7 +73,27 @@
   }
 }
 
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
+  .t1 {
+    font-size: 30px;
+  }
+  .content-create-task {
+    padding: 5px 20px 5px 20px;
+  }
+  .content-create-task {
+    height: 370px;
+    max-height: 380px;
+  }
+  .content-image {
+    margin: 5px 5px 0px 0px;
+  }
+  .content-image > img {
+    width: 120px;
+    max-width: 130px;
+  }
+} */
+
+@media (max-width: 767px) {
   .t1 {
     font-size: 30px;
   }

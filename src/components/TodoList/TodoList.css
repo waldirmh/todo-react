@@ -8,13 +8,33 @@
 .content-task > ul {
   padding: 0px;
 }
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .content-task {
     width: 100%;
     margin-top: 8px;
   }
   .content-task {
     max-height: 270px;
+    overflow-y: auto;
+  }
+} */
+@media (max-width: 767px) {
+  .content-task {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .content-task {
+    max-height: 270px;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-task {
+    width: 100%;
+    margin-top: 8px;
+    height: 425px;
+    max-height: 450px;
     overflow-y: auto;
   }
 }
