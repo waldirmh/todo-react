@@ -12,12 +12,14 @@
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  height: 100vh;
-  position: fixed;
+  /* height: 100vh; */
+  /* position: fixed; */
   margin: 0px;
   padding: 0px;
 }
-
+.container {
+  margin-top: 30px;
+}
 /* SECOND CARD  */
 .content-tasks {
   /* background: rgb(8, 231, 64); */
@@ -29,9 +31,16 @@
 
 @media (max-width: 576px) {
   .content-image {
-    margin: 5px 5px 0px 0px;
+    margin: 5px;
   }
   .content-image > img {
     width: 100px;
+  }
+  .t1 {
+    font-size: 30px;
+  }
+  .content-tasks {
+    padding: 2px;
+    margin-top: 10px;
   }
 }

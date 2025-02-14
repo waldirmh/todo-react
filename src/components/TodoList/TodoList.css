@@ -8,3 +8,13 @@
 .content-task > ul {
   padding: 0px;
 }
+@media (max-width: 576px) {
+  .content-task {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .content-task {
+    max-height: 270px;
+    overflow-y: auto;
+  }
+}

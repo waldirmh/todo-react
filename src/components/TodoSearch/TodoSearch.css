@@ -17,3 +17,17 @@
   right: 13%;
   top: 5px;
 }
+
+@media (max-width: 576px) {
+  .content-search {
+    max-height: 80px;
+    height: 50px;
+  }
+  .input-search {
+    width: 100%;
+  }
+  .bi-search {
+    right: -85%;
+    top: -42px;
+  }
+}

@@ -47,3 +47,17 @@
 .bi:hover {
   color: gray;
 }
+
+@media (max-width: 576px) {
+  .bi-check-square-fill {
+    left: -5%;
+  }
+
+  .bi-trash-fill {
+    right: -4%;
+  }
+  .text-item {
+    width: 220px;
+    max-width: 240px;
+  }
+}
