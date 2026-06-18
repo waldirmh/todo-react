@@ -5,29 +5,23 @@
 .add-task-input-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0 4px;
+  gap: 8px;
+  padding: 4px 0 2px;
 }
 
 .add-task-icon {
-  font-size: 22px;
+  font-size: 20px;
   color: var(--accent-color);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.add-task-icon:hover {
-  transform: scale(1.1);
 }
 
 .add-task-input {
   flex: 1;
-  height: 34px;
+  height: 32px;
   padding: 0;
   border: none;
   background: transparent;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 13px;
   font-family: inherit;
 }
 
@@ -40,26 +34,21 @@
 }
 
 .btn-add-task {
-  padding: 6px 16px;
+  padding: 5px 14px;
   border: none;
   border-radius: var(--radius-sm);
   background: var(--accent-color);
   color: var(--white-color);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  transition: var(--transition);
   white-space: nowrap;
-}
-
-.btn-add-task:hover {
-  background: var(--accent-hover);
 }
 
 .category-selector {
   display: flex;
-  gap: 5px;
+  gap: 4px;
   flex-wrap: wrap;
   padding-top: 2px;
 }
@@ -68,21 +57,15 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  padding: 3px 8px;
+  padding: 2px 7px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-secondary);
-  font-size: 11px;
+  font-size: 10px;
   font-family: inherit;
   cursor: pointer;
-  transition: var(--transition);
   white-space: nowrap;
-}
-
-.category-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
 }
 
 .category-btn.category-active {
@@ -92,50 +75,5 @@
 }
 
 .category-btn i {
-  font-size: 12px;
-}
-
-@media (max-width: 1024px) {
-  .add-task-input-wrapper {
-    padding: 4px 0 2px;
-    gap: 8px;
-  }
-
-  .add-task-icon {
-    font-size: 20px;
-  }
-
-  .add-task-input {
-    height: 30px;
-    font-size: 13px;
-  }
-
-  .btn-add-task {
-    padding: 5px 12px;
-    font-size: 12px;
-  }
-
-  .category-selector {
-    gap: 4px;
-  }
-
-  .category-btn {
-    padding: 2px 6px;
-    font-size: 10px;
-  }
-
-  .category-btn i {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 640px) {
-  .category-selector {
-    gap: 3px;
-  }
-
-  .category-btn {
-    padding: 2px 5px;
-    font-size: 10px;
-  }
+  font-size: 11px;
 }

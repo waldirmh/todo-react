@@ -1,16 +1,16 @@
 .sidebar-categories {
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 .categories-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 10px;
+  padding: 5px 8px;
 }
 
 .categories-title {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -18,8 +18,8 @@
 }
 
 .add-category-btn {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
@@ -28,30 +28,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  transition: var(--transition);
-}
-
-.add-category-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
+  font-size: 13px;
 }
 
 .add-category-form {
-  padding: 6px 10px 12px;
+  padding: 5px 8px 10px;
 }
 
 .category-name-input {
   width: 100%;
-  height: 28px;
-  padding: 0 6px;
+  height: 26px;
+  padding: 0 5px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background: var(--bg-input);
   color: var(--text-primary);
-  font-size: 12px;
+  font-size: 11px;
   font-family: inherit;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .category-name-input:focus {
@@ -60,31 +54,31 @@
 }
 
 .category-options {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .option-group {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .option-label {
   display: block;
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-secondary);
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 3px;
-  max-height: 70px;
+  gap: 2px;
+  max-height: 60px;
   overflow-y: auto;
 }
 
 .icon-option {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -93,12 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  transition: var(--transition);
-}
-
-.icon-option:hover {
-  background: var(--bg-hover);
+  font-size: 11px;
 }
 
 .icon-option.icon-selected {
@@ -110,20 +99,15 @@
 .color-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 3px;
+  gap: 2px;
 }
 
 .color-option {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: 2px solid transparent;
   border-radius: 50%;
   cursor: pointer;
-  transition: var(--transition);
-}
-
-.color-option:hover {
-  transform: scale(1.1);
 }
 
 .color-option.color-selected {
@@ -133,40 +117,35 @@
 
 .confirm-add-btn {
   width: 100%;
-  height: 28px;
+  height: 26px;
   border: none;
   border-radius: var(--radius-sm);
   background: var(--accent-color);
   color: var(--white-color);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition);
-}
-
-.confirm-add-btn:hover {
-  background: var(--accent-hover);
 }
 
 .categories-list {
-  padding: 0 10px;
+  padding: 0 8px;
 }
 
 .category-item {
   position: relative;
-  padding-right: 32px;
-  min-height: 32px;
+  padding-right: 28px;
+  min-height: 28px;
   display: flex;
   align-items: center;
 }
 
 .delete-category-btn {
   position: absolute;
-  right: 4px;
+  right: 3px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -175,14 +154,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  opacity: 0.6;
-  transition: var(--transition);
-}
-
-.category-item:hover .delete-category-btn,
-.delete-category-btn:focus {
-  opacity: 1;
+  font-size: 14px;
+  opacity: 0.7;
 }
 
 .delete-category-btn:hover {
@@ -195,28 +168,24 @@
     grid-template-columns: repeat(8, 1fr);
   }
 
-  .delete-category-btn {
-    opacity: 0.8;
-  }
-
   .categories-header {
-    padding: 4px 8px;
+    padding: 4px 6px;
   }
 
   .categories-title {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .add-category-form {
-    padding: 4px 8px 8px;
+    padding: 4px 6px 8px;
   }
 
   .categories-list {
-    padding: 0 8px;
+    padding: 0 6px;
   }
 
   .category-item {
-    min-height: 28px;
-    padding-right: 28px;
+    min-height: 26px;
+    padding-right: 26px;
   }
 }
