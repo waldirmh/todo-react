@@ -160,13 +160,19 @@
 
 .category-item {
   position: relative;
+  padding-right: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
 }
 
 .delete-category-btn {
   position: absolute;
-  right: 8px;
-  width: 20px;
-  height: 20px;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -175,22 +181,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  opacity: 0;
+  font-size: 18px;
+  opacity: 0.6;
   transition: var(--transition);
 }
 
-.category-item:hover .delete-category-btn {
+.category-item:hover .delete-category-btn,
+.delete-category-btn:focus {
   opacity: 1;
 }
 
 .delete-category-btn:hover {
-  background: rgba(231, 76, 60, 0.1);
+  background: rgba(231, 76, 60, 0.15);
   color: var(--danger-color);
 }
 
 @media (max-width: 1024px) {
   .icon-grid {
     grid-template-columns: repeat(8, 1fr);
+  }
+
+  .delete-category-btn {
+    opacity: 0.8;
   }
 }
