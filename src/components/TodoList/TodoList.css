@@ -1,5 +1,5 @@
 .task-list {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .empty-state {
@@ -8,19 +8,18 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 32px 24px;
-  min-height: 200px;
+  padding: 24px 16px;
 }
 
 .empty-icon {
-  font-size: 56px;
+  font-size: 48px;
   color: var(--text-tertiary);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   opacity: 0.4;
 }
 
 .empty-text {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-secondary);
   margin: 0;
   font-weight: 500;
@@ -28,23 +27,7 @@
 
 @media (max-width: 1024px) {
   .empty-state {
-    padding: 24px 16px;
-    min-height: 150px;
-  }
-
-  .empty-icon {
-    font-size: 48px;
-  }
-
-  .empty-text {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 640px) {
-  .empty-state {
-    padding: 20px 12px;
-    min-height: 120px;
+    padding: 16px 12px;
   }
 
   .empty-icon {
@@ -54,5 +37,19 @@
 
   .empty-text {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .empty-state {
+    padding: 12px 8px;
+  }
+
+  .empty-icon {
+    font-size: 36px;
+  }
+
+  .empty-text {
+    font-size: 12px;
   }
 }

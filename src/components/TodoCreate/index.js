@@ -17,11 +17,14 @@ function TodoCreate({
         <input
           ref={addTaskRef}
           className="add-task-input"
-          placeholder="Añadir una tarea... (N)"
+          placeholder="Añadir una tarea..."
           value={newTask}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
+        <button className="btn-add-task" onClick={handleAddTask} type="button">
+          Agregar
+        </button>
       </div>
       <div className="category-selector">
         {categories.map((cat) => (

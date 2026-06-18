@@ -1,9 +1,9 @@
 .task-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  margin-bottom: 8px;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -20,9 +20,9 @@
 }
 
 .task-checkbox {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
   border: 2px solid var(--border-color);
   border-radius: 50%;
   background: transparent;
@@ -47,7 +47,7 @@
 }
 
 .task-checkbox .bi-check2 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -56,14 +56,14 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .task-text {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-primary);
   word-break: break-word;
-  line-height: 1.4;
+  line-height: 1.3;
   cursor: default;
 }
 
@@ -75,29 +75,29 @@
 .task-category-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
+  gap: 3px;
+  padding: 2px 6px;
   border: 1px solid;
   border-radius: var(--radius-sm);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   width: fit-content;
   background: transparent;
 }
 
 .task-category-badge i {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .task-edit-input {
   width: 100%;
-  height: 28px;
-  padding: 0 8px;
+  height: 26px;
+  padding: 0 6px;
   border: 1px solid var(--accent-color);
   border-radius: var(--radius-sm);
   background: var(--bg-input);
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 13px;
   font-family: inherit;
 }
 
@@ -109,15 +109,15 @@
 .task-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   opacity: 1;
   transition: var(--transition);
 }
 
 .task-star-btn {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -145,13 +145,13 @@
 
 .task-star-btn .bi-star,
 .task-star-btn .bi-star-fill {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .task-category-btn {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -170,13 +170,13 @@
 }
 
 .task-category-btn .bi-tag {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .task-edit-btn {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -195,13 +195,13 @@
 }
 
 .task-edit-btn .bi-pencil {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .task-delete-btn {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   border: none;
   background: transparent;
   color: var(--text-tertiary);
@@ -220,13 +220,18 @@
 }
 
 .task-delete-btn .bi-trash3 {
-  font-size: 14px;
+  font-size: 13px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .task-item {
-    padding: 10px 12px;
-    gap: 10px;
+    padding: 8px 10px;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .task-text {
+    font-size: 12px;
   }
 
   .task-category-badge span {
@@ -234,7 +239,31 @@
   }
 
   .task-category-badge {
-    padding: 2px 6px;
+    padding: 1px 4px;
+  }
+
+  .task-star-btn,
+  .task-category-btn,
+  .task-edit-btn,
+  .task-delete-btn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .task-item {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .task-text {
+    font-size: 12px;
+  }
+
+  .task-category-badge {
+    padding: 1px 4px;
   }
 }
 
