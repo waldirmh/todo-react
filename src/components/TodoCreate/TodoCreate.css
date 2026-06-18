@@ -1,16 +1,16 @@
 .add-task-container {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .add-task-input-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 0 8px;
+  gap: 10px;
+  padding: 8px 0 4px;
 }
 
 .add-task-icon {
-  font-size: 28px;
+  font-size: 24px;
   color: var(--accent-color);
   cursor: pointer;
   transition: var(--transition);
@@ -22,12 +22,12 @@
 
 .add-task-input {
   flex: 1;
-  height: 40px;
+  height: 36px;
   padding: 0;
   border: none;
   background: transparent;
   color: var(--text-primary);
-  font-size: 15px;
+  font-size: 14px;
   font-family: inherit;
 }
 
@@ -50,12 +50,12 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 11px;
   font-family: inherit;
   cursor: pointer;
   transition: var(--transition);
@@ -74,7 +74,40 @@
 }
 
 .category-btn i {
-  font-size: 13px;
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .add-task-container {
+    margin-top: 0;
+  }
+
+  .add-task-input-wrapper {
+    padding: 4px 0 2px;
+    gap: 8px;
+  }
+
+  .add-task-icon {
+    font-size: 22px;
+  }
+
+  .add-task-input {
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .category-selector {
+    gap: 4px;
+  }
+
+  .category-btn {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  .category-btn i {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -83,7 +116,7 @@
   }
 
   .category-btn {
-    padding: 3px 8px;
-    font-size: 11px;
+    padding: 2px 6px;
+    font-size: 10px;
   }
 }

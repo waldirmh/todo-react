@@ -288,16 +288,16 @@ function App() {
               onAddCategory={addCategory}
               onDeleteCategory={deleteCategory}
             />
-            <div className="sidebar-footer">
-              <span className="total-tasks">
-                <i className="bi bi-bar-chart-fill"></i>
-                Total: {todos.length} tareas
-              </span>
-              <span className="keyboard-hint">
-                <kbd>N</kbd> nueva <kbd>/</kbd> buscar
-              </span>
-            </div>
           </nav>
+          <div className="sidebar-footer">
+            <span className="total-tasks">
+              <i className="bi bi-bar-chart-fill"></i>
+              Total: {todos.length} tareas
+            </span>
+            <span className="keyboard-hint">
+              <kbd>N</kbd> nueva <kbd>/</kbd> buscar
+            </span>
+          </div>
         </aside>
         <main className="main-content">
           <header className="content-header">
