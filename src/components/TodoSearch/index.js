@@ -1,15 +1,20 @@
 import "./TodoSearch.css";
 
-function TodoSearch({ handleSearchChange }) {
+function TodoSearch({ searchTerm, handleSearchChange, clearSearch }) {
   return (
-    <div className="content-search">
+    <div className="search-container">
+      <i className="bi bi-search search-icon"></i>
       <input
-        placeholder="search ...."
-        className="input-search"
+        className="search-input"
+        placeholder="Buscar tareas..."
+        value={searchTerm}
         onChange={handleSearchChange}
-        
       />
-      <i className="bi bi-search"></i>
+      {searchTerm && (
+        <button className="search-clear-btn" onClick={clearSearch}>
+          <i className="bi bi-x-lg"></i>
+        </button>
+      )}
     </div>
   );
 }

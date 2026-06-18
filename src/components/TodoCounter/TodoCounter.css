@@ -1,10 +1,15 @@
-.t1 {
-  text-align: center;
-  font-size: 40px;
-  font-weight: bolder;
-  color: var(--text-color-black);
+.counter-section {
+  margin-bottom: 16px;
 }
-.t2 {
+
+.counter-title {
   font-size: 18px;
-  color: var(--text-color-black);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.counter-text {
+  font-size: 14px;
+  color: var(--text-secondary);
 }

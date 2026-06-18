@@ -2,14 +2,14 @@ import "./TodoList.css";
 
 function TodoList({ todos, children }) {
   return (
-    <div className="content-task">
+    <div className="task-list">
       {todos.length === 0 && (
-        <div className="alert alert-primary" role="alert">
-          Oops you don't have any Task
+        <div className="empty-state">
+          <i className="bi bi-clipboard-check empty-icon"></i>
+          <p className="empty-text">No hay tareas pendientes</p>
         </div>
       )}
-
-      <ul>{children}</ul>
+      <ul className="task-list-items">{children}</ul>
     </div>
   );
 }
