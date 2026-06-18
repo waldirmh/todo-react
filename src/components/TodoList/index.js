@@ -9,7 +9,7 @@ function TodoList({ todos, children }) {
           <p className="empty-text">No hay tareas pendientes</p>
         </div>
       )}
-      <ul className="task-list-items">{children}</ul>
+      {children}
     </div>
   );
 }

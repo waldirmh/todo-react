@@ -5,18 +5,37 @@ function TodoCreate({
   handleInputChange,
   handleKeyDown,
   handleAddTask,
+  selectedCategory,
+  onCategoryChange,
+  categories,
+  addTaskRef,
 }) {
   return (
     <div className="add-task-container">
       <div className="add-task-input-wrapper">
-        <i className="bi bi-plus add-task-icon"></i>
+        <i className="bi bi-plus-circle add-task-icon"></i>
         <input
+          ref={addTaskRef}
           className="add-task-input"
-          placeholder="Añadir una tarea..."
+          placeholder="Añadir una tarea... (N)"
           value={newTask}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
+      </div>
+      <div className="category-selector">
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            className={`category-btn ${selectedCategory === cat.id ? "category-active" : ""}`}
+            onClick={() => onCategoryChange(cat.id)}
+            type="button"
+            style={{ "--cat-color": cat.color }}
+          >
+            <i className={`bi ${cat.icon}`}></i>
+            <span>{cat.label}</span>
+          </button>
+        ))}
       </div>
     </div>
   );

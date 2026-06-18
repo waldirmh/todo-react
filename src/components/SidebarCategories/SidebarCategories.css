@@ -1,0 +1,196 @@
+.sidebar-categories {
+  margin-top: 8px;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 8px 12px;
+}
+
+.categories-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+}
+
+.categories-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-category-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.add-category-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.add-category-form {
+  padding: 8px 12px 16px;
+}
+
+.category-name-input {
+  width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  margin-bottom: 8px;
+}
+
+.category-name-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.category-options {
+  margin-bottom: 8px;
+}
+
+.option-group {
+  margin-bottom: 8px;
+}
+
+.option-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+.icon-option {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.icon-option:hover {
+  background: var(--bg-hover);
+}
+
+.icon-option.icon-selected {
+  border-color: var(--accent-color);
+  background: rgba(219, 76, 63, 0.1);
+  color: var(--accent-color);
+}
+
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.color-option {
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+.color-option.color-selected {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--bg-primary);
+}
+
+.confirm-add-btn {
+  width: 100%;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent-color);
+  color: var(--white-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.confirm-add-btn:hover {
+  background: var(--accent-hover);
+}
+
+.categories-list {
+  padding: 0 12px;
+}
+
+.category-item {
+  position: relative;
+}
+
+.delete-category-btn {
+  position: absolute;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.category-item:hover .delete-category-btn {
+  opacity: 1;
+}
+
+.delete-category-btn:hover {
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--danger-color);
+}
+
+@media (max-width: 1024px) {
+  .icon-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}

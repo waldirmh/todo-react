@@ -51,8 +51,15 @@
   font-weight: 700;
 }
 
-.task-text {
+.task-content {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.task-text {
   font-size: 14px;
   color: var(--text-primary);
   word-break: break-word;
@@ -65,8 +72,25 @@
   color: var(--text-tertiary);
 }
 
+.task-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 500;
+  width: fit-content;
+  background: transparent;
+}
+
+.task-category-badge i {
+  font-size: 12px;
+}
+
 .task-edit-input {
-  flex: 1;
+  width: 100%;
   height: 28px;
   padding: 0 8px;
   border: 1px solid var(--accent-color);
@@ -124,6 +148,31 @@
   font-size: 14px;
 }
 
+.task-category-btn {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.task-category-btn:hover {
+  background: rgba(108, 117, 125, 0.1);
+  color: var(--text-primary);
+}
+
+.task-category-btn .bi-tag {
+  font-size: 14px;
+}
+
 .task-edit-btn {
   width: 28px;
   height: 28px;
@@ -172,4 +221,19 @@
 
 .task-delete-btn .bi-trash3 {
   font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .task-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .task-category-badge span {
+    display: none;
+  }
+
+  .task-category-badge {
+    padding: 2px 6px;
+  }
 }

@@ -1,35 +1,58 @@
-# Repositorio de Gestionar Tareas
+# Mis Tareas - Gestor de Tareas Personal
 
-- Version NodeJs: 18.20.3
-- Run App Web: npm run start
-- usa bootstrap y antDesign
+Aplicación web minimalista para gestionar tareas con módulos dinámicos, temas dark/light y sonidos.
 
+## Características
 
-## Aplicación Web
+- ✅ Crear, editar, completar y eliminar tareas
+- 📁 Módulos dinámicos personalizables (Programación, Diseño, etc.)
+- 🌓 Tema claro y oscuro con persistencia
+- 🔔 Sonidos al completar/agregar/eliminar tareas
+- ⭐ Marcar tareas como importantes
+- 🔍 Búsqueda de tareas
+- 📱 Diseño responsive (mobile, tablet, desktop)
+- 💾 Persistencia total con localStorage
 
-Aplicación web para gestionar tareas: crear , eliminar ,marcar como terminado
+## Tecnologías
 
-## Available Scripts
+- React 18
+- Ant Design (Popconfirm, Dropdown)
+- Bootstrap Icons
+- Web Audio API (sonidos)
+- CSS Variables (temas)
 
-In the project directory, you can run:
+## Instalación
 
-### `npm start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Desarrollo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm run dev
+```
 
-### `npm run build`
+Abre [http://localhost:3000](http://localhost:3000)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Producción
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Estructura
 
-### `Support`
-Correo [waldirmendozahuaman887@gmail.com].
+```
+src/
+├── App/              # Componente principal y estilos
+├── components/       # Componentes reutilizables
+│   ├── SidebarCategories/  # Módulos dinámicos
+│   ├── TodoCreate/         # Crear tareas
+│   ├── TodoItem/           # Item individual
+│   ├── TodoList/           # Lista de tareas
+│   └── TodoSearch/         # Búsqueda
+├── data/             # Datos (iconos, colores)
+├── utils/            # Utilidades (sonidos)
+└── index.css         # Variables CSS globales
+```

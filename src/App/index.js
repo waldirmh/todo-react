@@ -1,29 +1,58 @@
 import "./App.css";
-import React, { useState, useMemo, useEffect } from "react";
-import { TodoList } from "../components/TodoList";
+import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { TodoItem } from "../components/TodoItem";
 import { TodoSearch } from "../components/TodoSearch";
 import { TodoCreate } from "../components/TodoCreate";
+import { SidebarCategories } from "../components/SidebarCategories";
 import { ToastContainer, toast } from "react-toastify";
 import { useLocalStorage } from "./useLocalStorage";
 import { playCompleteSound, playAddSound, playDeleteSound } from "../utils/sounds";
+import { defaultCategories } from "../data/categories";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [newTask, setNewTask] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("general");
   const [todos, setTodos] = useLocalStorage("TODOS", []);
+  const [categories, setCategories] = useLocalStorage("CATEGORIES", defaultCategories);
   const [darkMode, setDarkMode] = useLocalStorage("DARK_MODE", false);
   const [activeView, setActiveView] = useState("today");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [timeFilter, setTimeFilter] = useState("all");
+
+  const searchRef = useRef(null);
+  const addTaskRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  const handleKeyboardShortcuts = useCallback((e) => {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+    if (e.key === "n" || e.key === "N") {
+      e.preventDefault();
+      addTaskRef.current?.focus();
+    } else if (e.key === "/") {
+      e.preventDefault();
+      searchRef.current?.focus();
+    } else if (e.key === "Escape") {
+      setSidebarOpen(false);
+      setSearchTerm("");
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyboardShortcuts);
+    return () => document.removeEventListener("keydown", handleKeyboardShortcuts);
+  }, [handleKeyboardShortcuts]);
+
+  const toggleTheme = () => setDarkMode(!darkMode);
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const closeSidebar = () => setSidebarOpen(false);
 
   const completedCount = useMemo(
     () => todos.filter((todo) => todo.completed).length,
@@ -36,29 +65,17 @@ function App() {
     [todos]
   );
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const clearSearch = () => {
-    setSearchTerm("");
-  };
-
-  const handleInputChange = (e) => {
-    setNewTask(e.target.value);
-  };
+  const handleSearchChange = (e) => setSearchTerm(e.target.value);
+  const clearSearch = () => setSearchTerm("");
+  const handleInputChange = (e) => setNewTask(e.target.value);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleAddTask();
-    }
+    if (e.key === "Enter") handleAddTask();
   };
 
   const completedTask = (taskId) => {
     const todo = todos.find((t) => t.id === taskId);
-    if (todo && !todo.completed) {
-      playCompleteSound();
-    }
+    if (todo && !todo.completed) playCompleteSound();
     setTodos((prevTodos) =>
       prevTodos.map((t) =>
         t.id === taskId ? { ...t, completed: !t.completed } : t
@@ -68,9 +85,17 @@ function App() {
 
   const handleAddTask = () => {
     if (newTask.trim()) {
-      const newTodo = { id: Date.now(), text: newTask, completed: false, important: false };
+      const newTodo = {
+        id: Date.now(),
+        text: newTask,
+        completed: false,
+        important: false,
+        category: selectedCategory,
+        createdAt: new Date().toISOString(),
+      };
       setTodos((prevTodos) => [...prevTodos, newTodo]);
       setNewTask("");
+      setSelectedCategory("general");
       playAddSound();
       toast.success("¡Tarea agregada!");
     }
@@ -98,6 +123,46 @@ function App() {
     );
   };
 
+  const changeTaskCategory = (taskId, newCategory) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === taskId ? { ...todo, category: newCategory } : todo
+      )
+    );
+    toast.info("¡Categoría actualizada!");
+  };
+
+  const addCategory = (newCategory) => {
+    setCategories((prev) => [...prev, newCategory]);
+    toast.success("¡Módulo creado!");
+  };
+
+  const deleteCategory = (categoryId) => {
+    const hasTasks = todos.some((t) => t.category === categoryId);
+    if (hasTasks) {
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.category === categoryId ? { ...todo, category: "general" } : todo
+        )
+      );
+    }
+    setCategories((prev) => prev.filter((c) => c.id !== categoryId));
+    toast.warning("¡Módulo eliminado!");
+  };
+
+  const isWithinDateRange = (dateStr, filter) => {
+    if (filter === "all") return true;
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+    if (filter === "today") return diffDays < 1;
+    if (filter === "week") return diffDays < 7;
+    if (filter === "month") return diffDays < 30;
+    return true;
+  };
+
   const getFilteredTodos = () => {
     let filtered = todos;
 
@@ -105,9 +170,14 @@ function App() {
       filtered = todos.filter((todo) => todo.completed);
     } else if (activeView === "important") {
       filtered = todos.filter((todo) => todo.important && !todo.completed);
+    } else if (activeView.startsWith("category-")) {
+      const categoryId = activeView.replace("category-", "");
+      filtered = todos.filter((todo) => todo.category === categoryId && !todo.completed);
     } else {
       filtered = todos.filter((todo) => !todo.completed);
     }
+
+    filtered = filtered.filter((todo) => isWithinDateRange(todo.createdAt, timeFilter));
 
     if (searchTerm) {
       filtered = filtered.filter((todo) =>
@@ -119,6 +189,11 @@ function App() {
   };
 
   const getViewTitle = () => {
+    if (activeView.startsWith("category-")) {
+      const categoryId = activeView.replace("category-", "");
+      const cat = categories.find((c) => c.id === categoryId);
+      return cat ? cat.label : "Módulo";
+    }
     const titles = {
       today: "Hoy",
       upcoming: "Próximos",
@@ -136,6 +211,16 @@ function App() {
 
   const displayTodos = getFilteredTodos();
 
+  const handleNavClick = (view) => {
+    setActiveView(view);
+    setTimeFilter("all");
+    closeSidebar();
+  };
+
+  const handleTimeFilterChange = (filter) => {
+    setTimeFilter(filter);
+  };
+
   return (
     <>
       <ToastContainer
@@ -144,26 +229,28 @@ function App() {
         style={{ fontSize: "13px" }}
       />
       <div className="app-layout">
-        <aside className="sidebar">
+        <div
+          className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`}
+          onClick={closeSidebar}
+        />
+        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <div className="sidebar-header">
             <div className="sidebar-logo">
               <i className="bi bi-check2-circle"></i>
-              <span>TodoApp</span>
+              <span>Mis Tareas</span>
             </div>
             <button
               className="theme-toggle"
               onClick={toggleTheme}
               aria-label="Cambiar tema"
             >
-              <i
-                className={`bi ${darkMode ? "bi-sun-fill" : "bi-moon-fill"}`}
-              ></i>
+              <i className={`bi ${darkMode ? "bi-sun-fill" : "bi-moon-fill"}`}></i>
             </button>
           </div>
           <nav className="sidebar-nav">
             <div
               className={`nav-item ${activeView === "today" ? "active" : ""}`}
-              onClick={() => setActiveView("today")}
+              onClick={() => handleNavClick("today")}
             >
               <i className="bi bi-inbox-fill" style={{ color: "var(--accent-color)" }}></i>
               <span>Hoy</span>
@@ -171,17 +258,14 @@ function App() {
             </div>
             <div
               className={`nav-item ${activeView === "upcoming" ? "active" : ""}`}
-              onClick={() => setActiveView("upcoming")}
+              onClick={() => handleNavClick("upcoming")}
             >
-              <i
-                className="bi bi-calendar-event"
-                style={{ color: "var(--success-color)" }}
-              ></i>
+              <i className="bi bi-calendar-event" style={{ color: "var(--success-color)" }}></i>
               <span>Próximos</span>
             </div>
             <div
               className={`nav-item ${activeView === "important" ? "active" : ""}`}
-              onClick={() => setActiveView("important")}
+              onClick={() => handleNavClick("important")}
             >
               <i className="bi bi-star-fill" style={{ color: "var(--warning-color)" }}></i>
               <span>Importantes</span>
@@ -189,43 +273,104 @@ function App() {
             </div>
             <div
               className={`nav-item ${activeView === "completed" ? "active" : ""}`}
-              onClick={() => setActiveView("completed")}
+              onClick={() => handleNavClick("completed")}
             >
-              <i
-                className="bi bi-check-circle"
-                style={{ color: "var(--purple-color)" }}
-              ></i>
+              <i className="bi bi-check-circle" style={{ color: "var(--purple-color)" }}></i>
               <span>Completadas</span>
               <span className="nav-count">{completedCount}</span>
+            </div>
+            <div className="sidebar-divider"></div>
+            <SidebarCategories
+              categories={categories}
+              activeView={activeView}
+              todos={todos}
+              onNavClick={handleNavClick}
+              onAddCategory={addCategory}
+              onDeleteCategory={deleteCategory}
+            />
+            <div className="sidebar-footer">
+              <span className="total-tasks">
+                <i className="bi bi-bar-chart-fill"></i>
+                Total: {todos.length} tareas
+              </span>
+              <span className="keyboard-hint">
+                <kbd>N</kbd> nueva <kbd>/</kbd> buscar
+              </span>
             </div>
           </nav>
         </aside>
         <main className="main-content">
           <header className="content-header">
-            <h1 className="content-title">{getViewTitle()}</h1>
-            <p className="content-date">{getViewDate()}</p>
+            <button
+              className="mobile-menu-btn"
+              onClick={toggleSidebar}
+              aria-label="Abrir menú"
+            >
+              <i className="bi bi-list"></i>
+            </button>
+            <div className="header-text">
+              <h1 className="content-title">{getViewTitle()}</h1>
+              <p className="content-date">{getViewDate()}</p>
+            </div>
+            <div className="time-filters">
+              <button
+                className={`time-filter-btn ${timeFilter === "all" ? "active" : ""}`}
+                onClick={() => handleTimeFilterChange("all")}
+              >
+                Todas
+              </button>
+              <button
+                className={`time-filter-btn ${timeFilter === "today" ? "active" : ""}`}
+                onClick={() => handleTimeFilterChange("today")}
+              >
+                Hoy
+              </button>
+              <button
+                className={`time-filter-btn ${timeFilter === "week" ? "active" : ""}`}
+                onClick={() => handleTimeFilterChange("week")}
+              >
+                Semana
+              </button>
+              <button
+                className={`time-filter-btn ${timeFilter === "month" ? "active" : ""}`}
+                onClick={() => handleTimeFilterChange("month")}
+              >
+                Mes
+              </button>
+            </div>
           </header>
           <div className="tasks-container">
             <TodoSearch
               searchTerm={searchTerm}
               handleSearchChange={handleSearchChange}
               clearSearch={clearSearch}
+              searchRef={searchRef}
             />
-            <TodoList todos={displayTodos}>
+            <TransitionGroup className="task-list-items">
               {displayTodos.map((todo) => (
-                <TodoItem
-                  key={todo.id}
-                  id={todo.id}
-                  text={todo.text}
-                  completed={todo.completed}
-                  important={todo.important}
-                  onDeleted={() => deleteTask(todo.id)}
-                  onCompleted={() => completedTask(todo.id)}
-                  onToggleImportant={() => toggleImportant(todo.id)}
-                  onEdit={(newText) => editTask(todo.id, newText)}
-                />
+                <CSSTransition key={todo.id} timeout={300} classNames="task">
+                  <TodoItem
+                    id={todo.id}
+                    text={todo.text}
+                    completed={todo.completed}
+                    important={todo.important}
+                    category={todo.category || "general"}
+                    categories={categories}
+                    onDeleted={() => deleteTask(todo.id)}
+                    onCompleted={() => completedTask(todo.id)}
+                    onToggleImportant={() => toggleImportant(todo.id)}
+                    onEdit={(newText) => editTask(todo.id, newText)}
+                    onChangeCategory={(newCat) => changeTaskCategory(todo.id, newCat)}
+                  />
+                </CSSTransition>
               ))}
-            </TodoList>
+            </TransitionGroup>
+            {displayTodos.length === 0 && (
+              <div className="empty-state">
+                <i className="bi bi-clipboard-check empty-icon"></i>
+                <p className="empty-text">No hay tareas pendientes</p>
+              </div>
+            )}
           </div>
           <div className="task-add-container">
             <TodoCreate
@@ -233,6 +378,10 @@ function App() {
               handleInputChange={handleInputChange}
               handleKeyDown={handleKeyDown}
               handleAddTask={handleAddTask}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+              categories={categories}
+              addTaskRef={addTaskRef}
             />
           </div>
         </main>

@@ -6,22 +6,28 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 0;
+  padding: 12px 0 8px;
 }
 
 .add-task-icon {
-  font-size: 20px;
+  font-size: 28px;
   color: var(--accent-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.add-task-icon:hover {
+  transform: scale(1.1);
 }
 
 .add-task-input {
   flex: 1;
-  height: 36px;
+  height: 40px;
   padding: 0;
   border: none;
   background: transparent;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 15px;
   font-family: inherit;
 }
 
@@ -31,4 +37,53 @@
 
 .add-task-input::placeholder {
   color: var(--text-tertiary);
+}
+
+.category-selector {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.category-btn.category-active {
+  border-color: var(--cat-color, var(--accent-color));
+  background: color-mix(in srgb, var(--cat-color, var(--accent-color)) 10%, transparent);
+  color: var(--cat-color, var(--accent-color));
+}
+
+.category-btn i {
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .category-selector {
+    gap: 4px;
+  }
+
+  .category-btn {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
 }
