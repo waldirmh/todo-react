@@ -12,10 +12,12 @@
 .add-task-icon {
   font-size: 20px;
   color: var(--accent-color);
+  flex-shrink: 0;
 }
 
 .add-task-input {
   flex: 1;
+  min-width: 0;
   height: 32px;
   padding: 0;
   border: none;
@@ -44,6 +46,11 @@
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .category-selector {
@@ -66,6 +73,7 @@
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .category-btn.category-active {
@@ -76,4 +84,34 @@
 
 .category-btn i {
   font-size: 11px;
+}
+
+@media (max-width: 640px) {
+  .add-task-input-wrapper {
+    gap: 6px;
+  }
+
+  .add-task-icon {
+    font-size: 18px;
+  }
+
+  .add-task-input {
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .btn-add-task {
+    padding: 5px 12px;
+    font-size: 12px;
+    height: 30px;
+  }
+
+  .category-btn {
+    padding: 2px 5px;
+    font-size: 9px;
+  }
+
+  .category-btn i {
+    font-size: 10px;
+  }
 }

@@ -7,6 +7,8 @@
 html, body {
   height: 100%;
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 .app-layout {
@@ -157,6 +159,7 @@ html, body {
   flex-direction: column;
   min-width: 0;
   overflow: hidden;
+  height: 100%;
 }
 
 .content-header {
@@ -227,10 +230,12 @@ html, body {
 .tasks-wrapper {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   min-height: 0;
   padding: 4px 14px;
   display: flex;
   flex-direction: column;
+  -webkit-overflow-scrolling: touch;
 }
 
 .task-list-items {
@@ -351,6 +356,19 @@ html, body {
 
 /* Mobile */
 @media (max-width: 640px) {
+  html, body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .app-layout {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
   .sidebar {
     width: 240px;
     left: -240px;
@@ -360,8 +378,14 @@ html, body {
     left: 0;
   }
 
+  .main-content {
+    height: 100%;
+    overflow: hidden;
+  }
+
   .content-header {
     padding: 6px 10px;
+    flex-shrink: 0;
   }
 
   .content-title {
@@ -373,11 +397,17 @@ html, body {
   }
 
   .tasks-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
     padding: 4px 10px;
+    -webkit-overflow-scrolling: touch;
   }
 
   .task-add-container {
     padding: 4px 10px 6px;
+    flex-shrink: 0;
   }
 
   .empty-icon {
