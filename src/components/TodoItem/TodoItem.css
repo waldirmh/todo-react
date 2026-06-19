@@ -179,50 +179,6 @@
   font-size: 12px;
 }
 
-@media (max-width: 1024px) {
-  .task-item {
-    padding: 7px 8px;
-    gap: 7px;
-    margin-bottom: 4px;
-  }
-
-  .task-text {
-    font-size: 12px;
-  }
-
-  .task-category-badge span {
-    display: none;
-  }
-
-  .task-category-badge {
-    padding: 1px 3px;
-  }
-
-  .task-star-btn,
-  .task-category-btn,
-  .task-edit-btn,
-  .task-delete-btn {
-    width: 22px;
-    height: 22px;
-    min-width: 22px;
-  }
-}
-
-@media (max-width: 640px) {
-  .task-item {
-    padding: 6px 7px;
-    gap: 6px;
-  }
-
-  .task-text {
-    font-size: 12px;
-  }
-
-  .task-category-badge {
-    padding: 1px 3px;
-  }
-}
-
 /* Ant Design Popconfirm Custom Styles */
 :global(.ant-popover) {
   border-radius: var(--radius-md) !important;

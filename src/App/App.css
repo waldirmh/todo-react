@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
 .app-layout {
   display: flex;
   height: 100vh;
@@ -18,11 +23,12 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  height: 100%;
   overflow: hidden;
 }
 
 .sidebar-header {
-  padding: 10px 14px;
+  padding: 8px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,14 +110,14 @@
 }
 
 .sidebar-footer {
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-top: 1px solid var(--border-color);
   flex-shrink: 0;
   background: var(--bg-sidebar);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
 }
 
 .total-tasks {
@@ -150,11 +156,12 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100%;
   overflow: hidden;
 }
 
 .content-header {
-  padding: 8px 14px;
+  padding: 6px 14px;
   border-bottom: 1px solid var(--border-color);
   flex-shrink: 0;
   display: flex;
@@ -218,11 +225,11 @@
   color: var(--white-color);
 }
 
-.tasks-container {
+.tasks-wrapper {
   flex: 1;
-  padding: 6px 14px;
   overflow-y: auto;
   min-height: 0;
+  padding: 4px 14px;
   display: flex;
   flex-direction: column;
 }
@@ -230,6 +237,7 @@
 .task-list-items {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .empty-state {
@@ -239,7 +247,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12px;
+  padding: 16px 12px;
 }
 
 .empty-icon {
@@ -257,7 +265,7 @@
 }
 
 .task-add-container {
-  padding: 6px 14px;
+  padding: 4px 14px 6px;
   border-top: 1px solid var(--border-color);
   flex-shrink: 0;
   background: var(--bg-primary);
@@ -317,7 +325,7 @@
     text-align: center;
   }
 
-  .tasks-container {
+  .tasks-wrapper {
     padding: 6px 12px;
   }
 
@@ -365,7 +373,7 @@
     font-size: 10px;
   }
 
-  .tasks-container {
+  .tasks-wrapper {
     padding: 4px 10px;
   }
 

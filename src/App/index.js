@@ -339,7 +339,7 @@ function App() {
               </button>
             </div>
           </header>
-          <div className="tasks-container">
+          <div className="tasks-wrapper">
             <TodoSearch
               searchTerm={searchTerm}
               handleSearchChange={handleSearchChange}
