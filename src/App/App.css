@@ -12,6 +12,7 @@ html, body {
 .app-layout {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   background: var(--bg-primary);
   overflow: hidden;
 }
@@ -23,7 +24,6 @@ html, body {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -156,7 +156,6 @@ html, body {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  height: 100%;
   overflow: hidden;
 }
 
@@ -237,7 +236,6 @@ html, body {
 .task-list-items {
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
 .empty-state {
@@ -286,6 +284,7 @@ html, body {
     left: -260px;
     top: 0;
     height: 100vh;
+    height: 100dvh;
     z-index: 100;
     box-shadow: var(--shadow-md);
   }
@@ -308,7 +307,7 @@ html, body {
   }
 
   .content-header {
-    padding: 8px 12px;
+    padding: 6px 12px;
     flex-wrap: wrap;
   }
 
@@ -326,11 +325,11 @@ html, body {
   }
 
   .tasks-wrapper {
-    padding: 6px 12px;
+    padding: 4px 12px;
   }
 
   .task-add-container {
-    padding: 6px 12px;
+    padding: 4px 12px 6px;
   }
 
   .content-title {
@@ -378,7 +377,7 @@ html, body {
   }
 
   .task-add-container {
-    padding: 6px 10px;
+    padding: 4px 10px 6px;
   }
 
   .empty-icon {
