@@ -20,7 +20,7 @@ html, body {
 .app-layout {
   display: flex;
   height: 100vh;
-  height: 100dvh;
+  height: var(--app-height, 100dvh);
   background: var(--bg-primary);
   overflow: hidden;
 }
@@ -368,8 +368,6 @@ html, body {
   }
 
   .app-layout {
-    height: 100vh;
-    height: 100dvh;
     overflow: hidden;
   }
 

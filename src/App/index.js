@@ -53,24 +53,40 @@ function App() {
   useEffect(() => {
     if (window.innerWidth > 640) return;
 
-    const reapplyScrollLock = () => {
-      window.scrollTo(0, 0);
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-    };
+    let keyboardOpen = false;
+    let initialHeight = window.visualViewport
+      ? window.visualViewport.height
+      : window.innerHeight;
 
     const onViewportChange = () => {
-      setTimeout(reapplyScrollLock, 50);
+      if (!window.visualViewport) return;
+
+      const currentHeight = window.visualViewport.height;
+      const wasKeyboardOpen = keyboardOpen;
+      keyboardOpen = currentHeight < initialHeight * 0.8;
+
+      document.documentElement.style.setProperty(
+        '--app-height',
+        `${currentHeight}px`
+      );
+
+      if (wasKeyboardOpen && !keyboardOpen) {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.style.overflow = 'hidden';
+          document.body.style.overflow = 'hidden';
+        }, 100);
+      }
     };
 
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', onViewportChange);
-      window.visualViewport.addEventListener('scroll', onViewportChange);
-      return () => {
-        window.visualViewport.removeEventListener('resize', onViewportChange);
-        window.visualViewport.removeEventListener('scroll', onViewportChange);
-      };
-    }
+    onViewportChange();
+
+    window.visualViewport.addEventListener('resize', onViewportChange);
+    window.visualViewport.addEventListener('scroll', onViewportChange);
+    return () => {
+      window.visualViewport.removeEventListener('resize', onViewportChange);
+      window.visualViewport.removeEventListener('scroll', onViewportChange);
+    };
   }, []);
 
   const toggleTheme = () => setDarkMode(!darkMode);
