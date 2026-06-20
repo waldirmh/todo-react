@@ -51,41 +51,40 @@ function App() {
   }, [handleKeyboardShortcuts]);
 
   useEffect(() => {
-    if (window.innerWidth > 640) return;
+    if (window.innerWidth > 640 || !window.visualViewport) return;
 
-    let keyboardOpen = false;
-    let initialHeight = window.visualViewport
-      ? window.visualViewport.height
-      : window.innerHeight;
+    let maxHeight = window.visualViewport.height;
+
+    const resetLayout = () => {
+      document.documentElement.style.removeProperty('--app-height');
+      window.scrollTo(0, 0);
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    };
 
     const onViewportChange = () => {
-      if (!window.visualViewport) return;
+      const h = window.visualViewport.height;
+      maxHeight = Math.max(maxHeight, h);
 
-      const currentHeight = window.visualViewport.height;
-      const wasKeyboardOpen = keyboardOpen;
-      keyboardOpen = currentHeight < initialHeight * 0.8;
-
-      document.documentElement.style.setProperty(
-        '--app-height',
-        `${currentHeight}px`
-      );
-
-      if (wasKeyboardOpen && !keyboardOpen) {
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          document.documentElement.style.overflow = 'hidden';
-          document.body.style.overflow = 'hidden';
-        }, 100);
+      if (h < maxHeight * 0.85) {
+        document.documentElement.style.setProperty('--app-height', `${h}px`);
+      } else {
+        setTimeout(resetLayout, 150);
       }
     };
 
-    onViewportChange();
+    const input = addTaskRef.current;
+    const onInputBlur = () => setTimeout(resetLayout, 200);
 
+    if (input) {
+      input.addEventListener('blur', onInputBlur);
+    }
+
+    onViewportChange();
     window.visualViewport.addEventListener('resize', onViewportChange);
-    window.visualViewport.addEventListener('scroll', onViewportChange);
     return () => {
       window.visualViewport.removeEventListener('resize', onViewportChange);
-      window.visualViewport.removeEventListener('scroll', onViewportChange);
+      if (input) input.removeEventListener('blur', onInputBlur);
     };
   }, []);
 
@@ -137,6 +136,13 @@ function App() {
       setSelectedCategory("general");
       playAddSound();
       toast.success("¡Tarea agregada!");
+      if (window.innerWidth <= 640 && addTaskRef.current) {
+        addTaskRef.current.blur();
+        setTimeout(() => {
+          document.documentElement.style.removeProperty('--app-height');
+          window.scrollTo(0, 0);
+        }, 300);
+      }
     }
   };
 
