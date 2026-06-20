@@ -226,7 +226,7 @@ function App() {
       <ToastContainer
         theme={darkMode ? "dark" : "light"}
         position="top-right"
-        style={{ fontSize: "13px" }}
+        style={{ fontSize: "15px" }}
       />
       <div className="app-layout">
         <div

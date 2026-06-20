@@ -10,7 +10,7 @@
 }
 
 .categories-title {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .add-category-form {
@@ -43,7 +43,7 @@
   border-radius: var(--radius-sm);
   background: var(--bg-input);
   color: var(--text-primary);
-  font-size: 11px;
+  font-size: 13px;
   font-family: inherit;
   margin-bottom: 5px;
 }
@@ -63,7 +63,7 @@
 
 .option-label {
   display: block;
-  font-size: 9px;
+  font-size: 10px;
   color: var(--text-secondary);
   margin-bottom: 2px;
 }
@@ -87,7 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .icon-option.icon-selected {
@@ -122,7 +122,7 @@
   border-radius: var(--radius-sm);
   background: var(--accent-color);
   color: var(--white-color);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -154,7 +154,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 16px;
   opacity: 0.7;
 }
 
@@ -173,7 +173,7 @@
   }
 
   .categories-title {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .add-category-form {
@@ -187,5 +187,11 @@
   .category-item {
     min-height: 26px;
     padding-right: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .category-name-input {
+    font-size: 16px;
   }
 }

@@ -34,7 +34,7 @@
 }
 
 .task-checkbox .bi-check2 {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .task-text {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-primary);
   word-break: break-word;
   line-height: 1.3;
@@ -65,14 +65,14 @@
   padding: 1px 5px;
   border: 1px solid;
   border-radius: var(--radius-sm);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
   width: fit-content;
   background: transparent;
 }
 
 .task-category-badge i {
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .task-edit-input {
@@ -83,7 +83,7 @@
   border-radius: var(--radius-sm);
   background: var(--bg-input);
   color: var(--text-primary);
-  font-size: 12px;
+  font-size: 14px;
   font-family: inherit;
 }
 
@@ -119,7 +119,7 @@
 
 .task-star-btn .bi-star,
 .task-star-btn .bi-star-fill {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .task-category-btn {
@@ -138,7 +138,7 @@
 }
 
 .task-category-btn .bi-tag {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .task-edit-btn {
@@ -157,7 +157,7 @@
 }
 
 .task-edit-btn .bi-pencil {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .task-delete-btn {
@@ -176,7 +176,7 @@
 }
 
 .task-delete-btn .bi-trash3 {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* Ant Design Popconfirm Custom Styles */
@@ -196,14 +196,14 @@
 
 :global(.ant-popover-title) {
   padding: 10px 14px !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
   font-weight: 600 !important;
   border-bottom: 1px solid var(--border-color) !important;
 }
 
 :global(.ant-popover-description) {
   padding: 10px 14px !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 
 :global(.ant-popover-buttons) {
@@ -211,9 +211,15 @@
   border-top: 1px solid var(--border-color) !important;
 }
 
+@media (max-width: 640px) {
+  .task-edit-input {
+    font-size: 16px;
+  }
+}
+
 :global(.ant-popover-buttons .ant-btn) {
   border-radius: var(--radius-sm) !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   height: 30px !important;
   padding: 0 14px !important;
 }
@@ -260,7 +266,7 @@
 :global(.ant-dropdown-menu-item) {
   border-radius: var(--radius-sm) !important;
   padding: 6px 10px !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 
 [data-theme="dark"] :global(.ant-dropdown-menu) {

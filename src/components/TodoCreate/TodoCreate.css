@@ -10,7 +10,7 @@
 }
 
 .add-task-icon {
-  font-size: 20px;
+  font-size: 23px;
   color: var(--accent-color);
   flex-shrink: 0;
 }
@@ -23,7 +23,7 @@
   border: none;
   background: transparent;
   color: var(--text-primary);
-  font-size: 13px;
+  font-size: 15px;
   font-family: inherit;
 }
 
@@ -41,7 +41,7 @@
   border-radius: var(--radius-sm);
   background: var(--accent-color);
   color: var(--white-color);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
@@ -69,7 +69,7 @@
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-secondary);
-  font-size: 10px;
+  font-size: 12px;
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
@@ -83,7 +83,7 @@
 }
 
 .category-btn i {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 @media (max-width: 640px) {
@@ -92,26 +92,26 @@
   }
 
   .add-task-icon {
-    font-size: 18px;
+    font-size: 21px;
   }
 
   .add-task-input {
     height: 30px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .btn-add-task {
     padding: 5px 12px;
-    font-size: 12px;
+    font-size: 14px;
     height: 30px;
   }
 
   .category-btn {
     padding: 2px 5px;
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .category-btn i {
-    font-size: 10px;
+    font-size: 12px;
   }
 }

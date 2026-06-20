@@ -9,6 +9,7 @@ html, body {
   overflow: hidden;
   position: fixed;
   width: 100%;
+  overscroll-behavior: none;
 }
 
 .app-layout {
@@ -38,7 +39,7 @@ html, body {
 }
 
 .sidebar-logo {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-primary);
   display: flex;
@@ -48,12 +49,12 @@ html, body {
 
 .sidebar-logo i {
   color: var(--accent-color);
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .theme-toggle {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
   background: transparent;
   border: none;
@@ -61,7 +62,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
 }
 
@@ -82,7 +83,7 @@ html, body {
   border-radius: var(--radius-sm);
   cursor: pointer;
   color: var(--text-secondary);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   margin-bottom: 1px;
 }
@@ -93,14 +94,14 @@ html, body {
 }
 
 .nav-item i {
-  font-size: 15px;
-  width: 17px;
+  font-size: 17px;
+  width: 20px;
   text-align: center;
 }
 
 .nav-item .nav-count {
   margin-left: auto;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-tertiary);
 }
 
@@ -126,19 +127,19 @@ html, body {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-tertiary);
 }
 
 .total-tasks i {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .keyboard-hint {
   display: flex;
   align-items: center;
   gap: 3px;
-  font-size: 9px;
+  font-size: 10px;
   color: var(--text-tertiary);
 }
 
@@ -149,7 +150,7 @@ html, body {
   border: 1px solid var(--border-color);
   border-radius: 2px;
   font-family: inherit;
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
 }
 
@@ -173,8 +174,8 @@ html, body {
 
 .mobile-menu-btn {
   display: none;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border: none;
   background: transparent;
   color: var(--text-primary);
@@ -182,7 +183,7 @@ html, body {
   border-radius: var(--radius-sm);
   align-items: center;
   justify-content: center;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .header-text {
@@ -191,14 +192,14 @@ html, body {
 }
 
 .content-title {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.2;
 }
 
 .content-date {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-tertiary);
   line-height: 1.2;
 }
@@ -215,7 +216,7 @@ html, body {
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-secondary);
-  font-size: 11px;
+  font-size: 13px;
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
@@ -235,7 +236,6 @@ html, body {
   padding: 4px 14px;
   display: flex;
   flex-direction: column;
-  -webkit-overflow-scrolling: touch;
 }
 
 .task-list-items {
@@ -254,14 +254,14 @@ html, body {
 }
 
 .empty-icon {
-  font-size: 44px;
+  font-size: 51px;
   color: var(--text-tertiary);
   margin-bottom: 8px;
   opacity: 0.4;
 }
 
 .empty-text {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-secondary);
   margin: 0;
   font-weight: 500;
@@ -325,7 +325,7 @@ html, body {
   .time-filter-btn {
     flex: 1;
     padding: 4px 4px;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
   }
 
@@ -338,19 +338,19 @@ html, body {
   }
 
   .content-title {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .content-date {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .empty-icon {
-    font-size: 38px;
+    font-size: 44px;
   }
 
   .empty-text {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -389,11 +389,11 @@ html, body {
   }
 
   .content-title {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .content-date {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .tasks-wrapper {
@@ -402,7 +402,6 @@ html, body {
     overflow-x: hidden;
     min-height: 0;
     padding: 4px 10px;
-    -webkit-overflow-scrolling: touch;
   }
 
   .task-add-container {
@@ -411,10 +410,10 @@ html, body {
   }
 
   .empty-icon {
-    font-size: 32px;
+    font-size: 37px;
   }
 
   .empty-text {
-    font-size: 11px;
+    font-size: 13px;
   }
 }
